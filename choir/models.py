@@ -187,7 +187,10 @@ class SongCategory(models.Model):
 class Song(models.Model):
     category = models.ForeignKey(SongCategory, related_name="songs", on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
+    # Playback priority on the site: youtube_id (embedded YouTube player) wins
+    # when present; otherwise audio_file is played/downloadable directly.
     youtube_id = models.CharField(max_length=32, blank=True, null=True)
+    audio_file = models.FileField(upload_to="songs/", blank=True, null=True)
     lyrics = models.TextField(blank=True)
     order = models.PositiveSmallIntegerField(default=0)
 
