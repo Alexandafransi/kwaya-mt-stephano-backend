@@ -5,3 +5,9 @@ db.sqlite3
 media/
 staticfiles/
 .env
+
+# Production secrets: the CI deploy writes deploy/ansible/prod.env from the
+# ENV_FILE secret, and a local copy is handy for pasting into GitHub — neither
+# may ever be committed.
+.env*
+prod.env
